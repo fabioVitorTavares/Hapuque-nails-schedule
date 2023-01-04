@@ -1,0 +1,23 @@
+{
+  "name": "hapuque-nails-schedule",
+  "version": "1.0.0",
+  "description": "Appointment schedule for manicure services",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fabioVitorTavares/Hapuque-nails-schedule.git"
+  },
+  "author": "Fábio",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fabioVitorTavares/Hapuque-nails-schedule/issues"
+  },
+  "homepage": "https://github.com/fabioVitorTavares/Hapuque-nails-schedule#readme",
+  "dependencies": {
+    "@angular/cli": "^15.0.4",
+    "angular": "^1.8.2"
+  }
+}
