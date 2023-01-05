@@ -10,15 +10,24 @@
 <script src="../node_modules/angular/angular.js"></script>
 <script>
   angular.module("helloWorld", []);
-  angular.module("helloWorld").controller("helloWorldController", function ($scope){
+  angular.module("helloWorld").controller("btnController", function ($scope){
     $scope.message = "Hello World!";
+    $scope.txt = "Escolher horário!";
   });
+
+
+
+
 </script>
 
 <body>
-  <div ng-controller="helloWorldController">
+  <div ng-controller="btnController">
     {{message}}
   </div>
+
+  <button ng-controller="btnController">
+    {{txt}}
+  </button>
 </body>
 
 </html>
