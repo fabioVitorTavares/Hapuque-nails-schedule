@@ -1,23 +1,22 @@
 {
-  "name": "hapuque-nails-schedule",
-  "version": "1.0.0",
-  "description": "Appointment schedule for manicure services",
-  "main": "index.js",
+  "name": "de-bem-com-as-unhas",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/fabioVitorTavares/Hapuque-nails-schedule.git"
-  },
-  "author": "Fábio",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/fabioVitorTavares/Hapuque-nails-schedule/issues"
-  },
-  "homepage": "https://github.com/fabioVitorTavares/Hapuque-nails-schedule#readme",
   "dependencies": {
-    "@angular/cli": "^15.0.4",
-    "angular": "^1.8.2"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.9",
+    "@vitejs/plugin-react": "^3.0.0",
+    "typescript": "^4.9.3",
+    "vite": "^4.0.0"
   }
 }
