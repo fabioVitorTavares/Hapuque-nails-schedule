@@ -1,0 +1,42 @@
+.calendar {
+  width: 21rem;
+  height: 27rem;
+}
+
+.header-calendar {
+  display: flex;
+  flex-direction: column;
+}
+
+.month-select-calendar {
+  height: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0.5rem;
+}
+
+.days-calendar {
+  display: grid;
+  height: 3rem;
+  width: 21rem;
+  grid-template-columns: 3rem 3rem 3rem 3rem 3rem 3rem 3rem;  
+  grid-template-rows: 3rem;
+ }
+
+.days-calendar span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0.1rem solid #000; 
+}
+
+.body-calendar {  
+  display: grid;
+  grid-template-columns: 3rem 3rem 3rem 3rem 3rem 3rem 3rem;  
+  grid-template-rows: 3rem 3rem 3rem 3rem 3rem 3rem;
+}
+
+.body-calendar span{
+  border: 0.1rem solid #000; 
+}
