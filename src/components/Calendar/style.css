@@ -32,11 +32,41 @@
 }
 
 .body-calendar {  
-  display: grid;
-  grid-template-columns: 3rem 3rem 3rem 3rem 3rem 3rem 3rem;  
-  grid-template-rows: 3rem 3rem 3rem 3rem 3rem 3rem;
+  height: 18rem;
+  width: 21rem;
+  overflow-y: hidden;
 }
 
-.body-calendar span{
+.numbers-of-calendar {
+  position: relative;
+  top: -3rem;
+  display: grid;
+  grid-template-columns: 3rem 3rem 3rem 3rem 3rem 3rem 3rem;  
+  grid-template-rows: 3rem 3rem 3rem 3rem 3rem 3rem 3rem 3rem;  
+
+}
+
+.number-of-day{
   border: 0.1rem solid #000; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes move-up {
+  from {
+    translate: 0 3rem;
+  }
+  to{
+    translate: 0 0;
+  }
+}
+
+@keyframes move-down {
+  from {
+    translate: 0 -3rem;
+  }
+  to{
+    translate: 0 0;
+  }
 }

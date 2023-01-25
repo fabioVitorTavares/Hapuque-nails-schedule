@@ -9,7 +9,7 @@ export function App() {
   return (
 
     <div className="App">
-      <h1>De bem com as unhas!</h1>
+      <h1>!</h1>
       <Calendar date={date} />
     </div>
   )
