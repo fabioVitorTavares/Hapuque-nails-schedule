@@ -28,7 +28,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 0.1rem solid #000; 
 }
 
 .body-calendar {  
@@ -43,14 +42,17 @@
   display: grid;
   grid-template-columns: 3rem 3rem 3rem 3rem 3rem 3rem 3rem;  
   grid-template-rows: 3rem 3rem 3rem 3rem 3rem 3rem 3rem 3rem;  
-
 }
 
 .number-of-day{
-  border: 0.1rem solid #000; 
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: opacity 1s;
+}
+
+.number-of-day:hover{
+  border: 0.1rem solid #000;
 }
 
 @keyframes move-up {
@@ -63,6 +65,24 @@
 }
 
 @keyframes move-down {
+  from {
+    translate: 0 -3rem;
+  }
+  to{
+    translate: 0 0;
+  }
+}
+
+@keyframes move-up-1 {
+  from {
+    translate: 0 3rem;
+  }
+  to{
+    translate: 0 0;
+  }
+}
+
+@keyframes move-down-1 {
   from {
     translate: 0 -3rem;
   }

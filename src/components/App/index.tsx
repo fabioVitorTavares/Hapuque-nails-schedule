@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Calendar } from '../Calendar'
+import { Schedule } from '../Schedule'
 import './style.css'
 
 export function App() {
@@ -8,9 +9,9 @@ export function App() {
 
   return (
 
-    <div className="App">
-      <h1>!</h1>
+    <div className="app">      
       <Calendar date={date} />
+      <Schedule />
     </div>
   )
 }

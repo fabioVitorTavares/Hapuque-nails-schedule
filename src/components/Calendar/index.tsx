@@ -1,7 +1,7 @@
 import { propsCalendar } from '../../types'
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
+import { useEffect, useRef, useState } from 'react'
 import './style.css'
-import { useEffect, useState } from 'react'
 
 const months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
 
@@ -10,6 +10,7 @@ export function Calendar({ date }: propsCalendar){
   const [referenceDate, setReferenceDate] = useState<Date>(new Date(date.getFullYear(), date.getMonth(), date.getDate() - date.getDay()))
   const [currentsDates, setCurrentsDates] = useState<Date[]>([])
   const [animationCalendar, setAnimationCalendar] = useState<String>('')
+  const refNumberOfCalendar = useRef<HTMLDivElement>(null)
 
   useEffect(() => {  
    
@@ -31,18 +32,68 @@ export function Calendar({ date }: propsCalendar){
   const changeReferenceDate = (e: React.WheelEvent) => {
     if (e.deltaY == 100) {
       setReferenceDate(new Date(referenceDate.getFullYear(), referenceDate.getMonth(), referenceDate.getDate() + 7))
-      setAnimationCalendar(new String('move-up'))
+      const newAnimation = animationCalendar == 'move-up' ? 'move-up-1' : 'move-up'
+      setAnimationCalendar(newAnimation)
     }
     else if (e.deltaY == -100) {
       setReferenceDate(new Date(referenceDate.getFullYear(), referenceDate.getMonth(), referenceDate.getDate() - 7))
-      setAnimationCalendar(new String('move-down'))
+      const newAnimation = animationCalendar == 'move-down' ? 'move-down-1' : 'move-down'
+      setAnimationCalendar(newAnimation)
     }
+  }
+  
+  const wheelDown = new WheelEvent("wheel", {
+    view: window,
+    bubbles: true,
+    cancelable: true,
+    clientX: 20,
+    deltaY: 100
+  });
+
+  const wheelUp = new WheelEvent("wheel", {
+    view: window,
+    bubbles: true,
+    cancelable: true,
+    clientX: 20,
+    deltaY: -100
+  });
+  
+  const nextMonth = () => {
+    
+    refNumberOfCalendar.current?.dispatchEvent(wheelDown)    
+    setTimeout(() => {
+      refNumberOfCalendar.current?.dispatchEvent(wheelDown)          
+    }, 150)
+    setTimeout(() => {
+      refNumberOfCalendar.current?.dispatchEvent(wheelDown)          
+    }, 350)
+    setTimeout(() => {
+      refNumberOfCalendar.current?.dispatchEvent(wheelDown)          
+    }, 550)    
+  }
+
+  const laterMonth = () => {
+    
+    refNumberOfCalendar.current?.dispatchEvent(wheelUp)    
+    setTimeout(() => {
+      refNumberOfCalendar.current?.dispatchEvent(wheelUp)          
+    }, 150)
+    setTimeout(() => {
+      refNumberOfCalendar.current?.dispatchEvent(wheelUp)          
+    }, 350)
+    setTimeout(() => {
+      refNumberOfCalendar.current?.dispatchEvent(wheelUp)          
+    }, 550)  
   }
 
   const selectors = (
     <div className='selectors'>
-      <IoIosArrowDown />
-      <IoIosArrowUp />
+      <IoIosArrowDown
+        onClick={nextMonth}
+      />
+      <IoIosArrowUp
+        onClick={laterMonth}
+      />
     </div>
   )
 
@@ -78,14 +129,16 @@ export function Calendar({ date }: propsCalendar){
       onWheel={e => changeReferenceDate(e)}
     >
       <div
+        ref={refNumberOfCalendar}
         className='numbers-of-calendar'
-        style={{animation: `${animationCalendar} 1s ease `}}
+        style={{animation: `${animationCalendar} 0.5s ease `}}
       >
         {
           currentsDates.map(d =>
             <span
-            className='number-of-day'
-            key={d.toLocaleDateString()}
+              className='number-of-day'              
+              key={d.toLocaleDateString()}
+              style={d.getMonth() == referenceDate.getMonth() ? {opacity: '1'}: {opacity: '0.5'}}
             >
               {d.getDate()} 
             </span>)
