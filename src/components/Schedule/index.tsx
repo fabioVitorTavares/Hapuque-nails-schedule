@@ -1,3 +1,6 @@
+import { useState } from 'react'
+import { propsSchedule } from '../../types'
+import { ModalSchedule } from '../ModalSchedule'
 import './style.css'
 
 const timeWindows = [
@@ -13,14 +16,27 @@ const timeWindows = [
   '17:00 - 17:50'
 ]
 
-export function Schedule() {
+export function Schedule({date}: propsSchedule) {
+  
+  const [modalIsOpen, setModalIsOpen] = useState<Boolean>(false)
+  const [hourSelected, setHourSelected] = useState<String>('')
 
-  const schedules = (
-    <div className='schedules'>
+  const openModal = (t: String) => {
+    setHourSelected(t)
+    setModalIsOpen(true)
+  }
+
+  const schedules = (    
+
+    <div
+      className='schedules'      
+    >
       {
         timeWindows.map(t => (
           <span
             className='hour'
+            key={t}
+            onClick={() => openModal(t)}
           >
             {t}
           </span>
@@ -28,10 +44,19 @@ export function Schedule() {
       }      
     </div>
   )
+  
 
   return (
     <div className='schedule'>
+      <h2>{date.toLocaleDateString()}</h2>
       {schedules}
+      {modalIsOpen &&
+        <ModalSchedule
+          date={date}
+          hour={hourSelected}
+          setModalIsOpen={setModalIsOpen}
+        />
+      }
     </div>
   )
 }

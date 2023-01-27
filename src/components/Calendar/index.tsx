@@ -5,7 +5,7 @@ import './style.css'
 
 const months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
 
-export function Calendar({ date }: propsCalendar){
+export function Calendar({ date, setDate }: propsCalendar){
 
   const [referenceDate, setReferenceDate] = useState<Date>(new Date(date.getFullYear(), date.getMonth(), date.getDate() - date.getDay()))
   const [currentsDates, setCurrentsDates] = useState<Date[]>([])
@@ -123,6 +123,18 @@ export function Calendar({ date }: propsCalendar){
     </div>
   )
 
+  const getStyleNumberOfDay = (d: Date) => {
+    const style = {
+      opacity: '1',
+      backgroundColor: ''
+    }
+
+    style.opacity =  d.getMonth() == referenceDate.getMonth() ? '1':'0.5' 
+    style.backgroundColor = date.toLocaleDateString() == d.toLocaleDateString() ? '#0646f5' : ''
+
+    return style
+  }
+
   const bodyCalendar = (
     <div
       className='body-calendar'
@@ -131,14 +143,15 @@ export function Calendar({ date }: propsCalendar){
       <div
         ref={refNumberOfCalendar}
         className='numbers-of-calendar'
-        style={{animation: `${animationCalendar} 0.5s ease `}}
+        style={{ animation: `${animationCalendar} 0.5s ease ` }}        
       >
         {
           currentsDates.map(d =>
             <span
               className='number-of-day'              
               key={d.toLocaleDateString()}
-              style={d.getMonth() == referenceDate.getMonth() ? {opacity: '1'}: {opacity: '0.5'}}
+              style={getStyleNumberOfDay(d)}
+              onClick={() => setDate(d)}
             >
               {d.getDate()} 
             </span>)

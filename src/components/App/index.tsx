@@ -10,8 +10,8 @@ export function App() {
   return (
 
     <div className="app">      
-      <Calendar date={date} />
-      <Schedule />
+      <Calendar date={date} setDate={setDate} />
+      <Schedule date={date}/>
     </div>
   )
 }

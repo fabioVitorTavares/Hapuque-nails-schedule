@@ -1,0 +1,33 @@
+.modal-schedule {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  animation: darken 2s ease forwards;
+}
+
+@keyframes darken {
+  from {
+    background-color: #fdfdfd9c;
+  }
+  to {
+    background-color: #0000009c;
+  }
+}
+
+.modal-schedule-content {
+  position: relative;
+  width: 30rem;
+  height: 30rem;
+  background-color: #ffffff;  
+}
+
+.icon-x-modal-schedule {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;  
+}
