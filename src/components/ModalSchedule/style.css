@@ -24,10 +24,45 @@
   width: 30rem;
   height: 30rem;
   background-color: #ffffff;  
+  border-radius: 0.5rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .icon-x-modal-schedule {
   position: absolute;
   top: 0.5rem;
-  right: 0.5rem;  
+  right: 0.5rem; 
+  border-radius: 0.5rem;
+}
+
+.icon-x-modal-schedule:hover {
+  background-color: #8d8d8d9c;
+  scale: 1.2;
+}
+
+.btns-modal-schedule {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn {
+  height: 3rem;
+  width: 9rem;
+  border: none;
+  border-radius: 0.5rem;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.btn-cancel {
+  background-color: #fa351b;
+}
+
+.btn-to-schedule {
+  background-color: #0b6dec;
 }

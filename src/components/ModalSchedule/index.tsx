@@ -11,6 +11,29 @@ export function ModalSchedule({date, hour, setModalIsOpen}: propsModalSchedule) 
     />
   )
 
+  const btnCancel = (
+    <button
+      className='btn btn-cancel '
+      onClick={() => setModalIsOpen(false)}
+    >
+      cancelar
+    </button>
+  )
+
+  const btnToSchedule= (
+    <button className='btn btn-to-schedule'>
+      agendar horário
+    </button>
+  )
+
+  const infosUserSchedule = (
+    <div className='infos-user-schedule'>
+      <h2>Cliente: </h2>
+      <h2>Dia: {date.toLocaleDateString()} </h2>
+      <h2>Horário: {hour}</h2>
+    </div>
+  )
+
   return (
     <div
       className='modal-schedule'
@@ -19,8 +42,12 @@ export function ModalSchedule({date, hour, setModalIsOpen}: propsModalSchedule) 
       <div className='modal-schedule-content'
         onClick={e => e.stopPropagation()}
       >
-        {iconX}
-        <h2>{hour}{date.toLocaleDateString()}</h2>      
+        {iconX}        
+        {infosUserSchedule}        
+        <div className='btns-modal-schedule'>
+          {btnCancel}
+          {btnToSchedule}
+        </div>
       </div>
     </div>
   )
