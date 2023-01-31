@@ -12,6 +12,7 @@ export function Calendar({ date, setDate }: propsCalendar){
   const [currentsDates, setCurrentsDates] = useState<Date[]>([])
   const [animationCalendar, setAnimationCalendar] = useState<String>('')
   const refNumberOfCalendar = useRef<HTMLDivElement>(null)
+  const refNumberOfDay = useRef<HTMLSpanElement>(null)
 
   useEffect(() => {  
    
@@ -127,7 +128,7 @@ export function Calendar({ date, setDate }: propsCalendar){
   const getStyleNumberOfDay = (d: Date) => {
     const style = {
       opacity: '1',
-      backgroundColor: ''
+      backgroundColor: '',
     }
 
     style.opacity =  d.getMonth() == referenceDate.getMonth() ? '1':'0.5' 
@@ -140,7 +141,6 @@ export function Calendar({ date, setDate }: propsCalendar){
     <div
       className='body-calendar'
       onWheel={e => changeReferenceDate(e)}
-      onAnimationStart={()=> console.log('touch')}
     >
       <div
         ref={refNumberOfCalendar}
@@ -150,10 +150,12 @@ export function Calendar({ date, setDate }: propsCalendar){
         {
           currentsDates.map(d =>
             <span
-              className='number-of-day'              
+              className='number-of-day' 
+              ref={refNumberOfDay}
               key={d.toLocaleDateString()}
               style={getStyleNumberOfDay(d)}
               onClick={() => setDate(d)}
+              
             >
               {d.getDate()} 
             </span>)

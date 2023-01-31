@@ -36,10 +36,6 @@
   overflow-y: hidden;
 }
 
-.body-calendar::-ms-track .number-of-day {  
-  scale: 1.5;
-}
-
 .numbers-of-calendar {
   position: relative;
   top: -3rem;
@@ -53,10 +49,20 @@
   align-items: center;
   justify-content: center;
   transition: opacity 1s;
+  animation: reducer 1 ease;
 }
 
 .number-of-day:hover{
   border: 0.1rem solid #000;
+}
+
+@keyframes reducer {
+  from {
+    scale: 1;
+  }
+  to {
+    scale: 1.5;
+  }
 }
 
 @keyframes move-up {
