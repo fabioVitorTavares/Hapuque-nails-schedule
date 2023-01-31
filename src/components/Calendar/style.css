@@ -36,6 +36,10 @@
   overflow-y: hidden;
 }
 
+.body-calendar::-ms-track .number-of-day {  
+  scale: 1.5;
+}
+
 .numbers-of-calendar {
   position: relative;
   top: -3rem;

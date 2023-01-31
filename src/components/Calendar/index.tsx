@@ -5,6 +5,7 @@ import './style.css'
 
 const months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
 
+
 export function Calendar({ date, setDate }: propsCalendar){
 
   const [referenceDate, setReferenceDate] = useState<Date>(new Date(date.getFullYear(), date.getMonth(), date.getDate() - date.getDay()))
@@ -139,6 +140,7 @@ export function Calendar({ date, setDate }: propsCalendar){
     <div
       className='body-calendar'
       onWheel={e => changeReferenceDate(e)}
+      onAnimationStart={()=> console.log('touch')}
     >
       <div
         ref={refNumberOfCalendar}
