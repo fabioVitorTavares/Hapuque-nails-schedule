@@ -32,12 +32,12 @@ export function Calendar({ date, setDate }: propsCalendar){
   },[referenceDate])
 
   const changeReferenceDate = (e: React.WheelEvent) => {
-    if (e.deltaY == 100) {
+    if (e.deltaY > 0) {
       setReferenceDate(new Date(referenceDate.getFullYear(), referenceDate.getMonth(), referenceDate.getDate() + 7))
       const newAnimation = animationCalendar == 'move-up' ? 'move-up-1' : 'move-up'
       setAnimationCalendar(newAnimation)
     }
-    else if (e.deltaY == -100) {
+    else {
       setReferenceDate(new Date(referenceDate.getFullYear(), referenceDate.getMonth(), referenceDate.getDate() - 7))
       const newAnimation = animationCalendar == 'move-down' ? 'move-down-1' : 'move-down'
       setAnimationCalendar(newAnimation)
