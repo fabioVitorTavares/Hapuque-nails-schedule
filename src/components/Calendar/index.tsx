@@ -11,6 +11,7 @@ export function Calendar({ date, setDate }: propsCalendar){
   const [referenceDate, setReferenceDate] = useState<Date>(new Date(date.getFullYear(), date.getMonth(), date.getDate() - date.getDay()))
   const [currentsDates, setCurrentsDates] = useState<Date[]>([])
   const [animationCalendar, setAnimationCalendar] = useState<String>('')
+  const [animationNumbers, setAnimationNumbers] = useState<String>('')
   const refNumberOfCalendar = useRef<HTMLDivElement>(null)
   const refNumberOfDay = useRef<HTMLSpanElement>(null)
 
@@ -60,8 +61,15 @@ export function Calendar({ date, setDate }: propsCalendar){
     deltaY: -100
   });
   
+  const getAnimationNumbers = () => {
+    return animationNumbers == 'reducer 1s ease' ?
+      'reducer-outer 1s ease' : 'reducer 1s ease'  
+  }
+
   const nextMonth = () => {
     
+    setAnimationNumbers(getAnimationNumbers)
+
     refNumberOfCalendar.current?.dispatchEvent(wheelDown)    
     setTimeout(() => {
       refNumberOfCalendar.current?.dispatchEvent(wheelDown)          
@@ -75,6 +83,8 @@ export function Calendar({ date, setDate }: propsCalendar){
   }
 
   const laterMonth = () => {
+    
+    setAnimationNumbers(getAnimationNumbers)
     
     refNumberOfCalendar.current?.dispatchEvent(wheelUp)    
     setTimeout(() => {
@@ -129,6 +139,7 @@ export function Calendar({ date, setDate }: propsCalendar){
     const style = {
       opacity: '1',
       backgroundColor: '',
+      animation: animationNumbers
     }
 
     style.opacity =  d.getMonth() == referenceDate.getMonth() ? '1':'0.5' 
